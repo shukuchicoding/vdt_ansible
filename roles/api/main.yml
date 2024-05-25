@@ -1,0 +1,18 @@
+---
+- name: Deploy API Service
+  hosts: api_servers
+  become: true
+  tasks:
+    - name: Pull API Service Docker image
+      docker_image:
+        name: "{{ api_image }}"
+        source: pull
+
+    - name: Run API Service container
+      docker_container:
+        name: my-api-service
+        image: "{{ api_image }}"
+        ports:
+          - "{{ api_port }}:8080"
+        state: started
+        restart_policy: always

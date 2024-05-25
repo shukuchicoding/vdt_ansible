@@ -1,0 +1,18 @@
+---
+- name: Deploy Web Service
+  hosts: web_servers
+  become: true
+  tasks:
+    - name: Pull Web Service Docker image
+      docker_image:
+        name: "{{ web_image }}"
+        source: pull
+
+    - name: Run Web Service container
+      docker_container:
+        name: my-web-service
+        image: "{{ web_image }}"
+        ports:
+          - "{{ web_port }}:80"
+        state: started
+        restart_policy: always
