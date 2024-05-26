@@ -13,6 +13,6 @@
         name: my-web-service
         image: "{{ web_image }}"
         ports:
-          - "{{ web_port }}:3000"
+          - "{{ web_port }}:80"
         state: started
         restart_policy: always
