@@ -13,6 +13,6 @@
         name: my-api-service
         image: "{{ api_image }}"
         ports:
-          - "{{ api_port }}:8080"
+          - "{{ api_port }}:5000"
         state: started
         restart_policy: always

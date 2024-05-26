@@ -13,6 +13,6 @@
         name: my-db-service
       image: "{{ db_image }}"
       ports:
-        - "{{ db_port }}:5432"
+        - "{{ db_port }}:27017"
       state: started
       restart_policy: always
